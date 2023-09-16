@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de Números Aleatorios</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #3498db, #e74c3c); /* Fondo degradado */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            
+        }
+
+        h1 {
+            margin-top: 30px;
+            
+        }
+
+        img {
+            max-width: 20%;
+            height: auto;
+            padding: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Números Aleatorios</h1>
+    <img src="logo_rojo.png" alt="Imagen de fondo"> <!-- Reemplaza "tu_imagen.jpg" con la ruta de tu imagen -->
+    <p>Número aleatorio: <span id="numero">0</span></p>
+    <button id="inicio">Iniciar</button>
+    <button id="pausa">Pausar</button>
+    <h3>Desarrollado po: Any Thalia Saavedra Cieza</h3>
+    
+
+    <script>
+        // Variables globales
+        let intervalId;
+        let isRunning = false;
+
+        // Función para generar un número aleatorio y mostrarlo en la página
+        function generarNumero() {
+            const numeroAleatorio = Math.floor(Math.random() * 100) + 1; // Cambia el rango según tus necesidades
+            document.getElementById('numero').textContent = numeroAleatorio;
+        }
+
+        // Función para iniciar el generador de números aleatorios
+        function iniciarGenerador() {
+            if (!isRunning) {
+                intervalId = setInterval(generarNumero, 1000); // Genera un número cada segundo
+                isRunning = true;
+            }
+        }
+
+        // Función para pausar el generador de números aleatorios
+        function pausarGenerador() {
+            clearInterval(intervalId);
+            isRunning = false;
+        }
+
+        // Asignar eventos a los botones
+        document.getElementById('inicio').addEventListener('click', iniciarGenerador);
+        document.getElementById('pausa').addEventListener('click', pausarGenerador);
+    </script>
+</body>
+</html>
+
